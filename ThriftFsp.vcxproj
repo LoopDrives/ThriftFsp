@@ -73,12 +73,18 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(SolutionDir)\build\$(Configuration)\</OutDir>
+    <IncludePath>C:\Program Files (x86)\WinFsp\inc\fuse3;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\WinFsp\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Program Files (x86)\WinFsp\inc\;$(IncludePath);$(SolutionDir)\$(ProjectName)\gen-cpp;$(ProjectDir)\thrift\lib\cpp\src\;C:\Users\Yogender\Downloads\boost_1_66_0</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\WinFsp\lib;$(LibraryPath);C:\@HomeWork\git\loopdrives</LibraryPath>
+    <OutDir>$(SolutionDir)\build\$(Configuration)\</OutDir>
+    <SourcePath>$(VC_SourcePath);$(SolutionDir)\$(ProjectName)\gen-cpp</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -93,6 +99,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winfsp-x86.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
       <Command>$(SolutionDir)\build\thrift-0.13.0.exe -o $(SolutionDir)\ThriftFsp\ --gen cpp  $(SolutionDir)\ThriftFsp\fsp.thrift</Command>
@@ -118,13 +125,17 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);THRIFT_STATIC_DEFINE</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>winfsp-x64.lib;%(AdditionalDependencies);libthrift.lib</AdditionalDependencies>
     </Link>
+    <PreBuildEvent>
+      <Command>$(SolutionDir)\build\thrift-0.13.0.exe -o $(SolutionDir)\ThriftFsp\ --gen cpp  $(SolutionDir)\ThriftFsp\fsp.thrift</Command>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -143,7 +154,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FuseImpl.cpp" />
+    <ClCompile Include="gen-cpp\fsp_constants.cpp" />
+    <ClCompile Include="gen-cpp\fsp_types.cpp" />
+    <ClCompile Include="gen-cpp\ThriftFuse.cpp" />
     <ClCompile Include="ThriftFsp.cpp" />
+    <ClCompile Include="thrift\lib\cpp\src\thrift\async\TConcurrentClientSyncInfo.cpp" />
+    <ClCompile Include="thrift\lib\cpp\src\thrift\concurrency\Monitor.cpp" />
+    <ClCompile Include="thrift\lib\cpp\src\thrift\concurrency\Mutex.cpp" />
+    <ClCompile Include="thrift\lib\cpp\src\thrift\protocol\TProtocol.cpp" />
+    <ClCompile Include="thrift\lib\cpp\src\thrift\TApplicationException.cpp" />
+    <ClCompile Include="thrift\lib\cpp\src\thrift\TOutput.cpp" />
+    <ClCompile Include="thrift\lib\cpp\src\thrift\transport\TPipe.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Compact.h" />
+    <ClInclude Include="FuseImpl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

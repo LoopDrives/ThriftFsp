@@ -13,10 +13,54 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ThriftCpp">
+      <UniqueIdentifier>{1b379ff8-0e6e-4655-8571-916459869b70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ThriftFsp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FuseImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gen-cpp\fsp_constants.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gen-cpp\fsp_types.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gen-cpp\ThriftFuse.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="thrift\lib\cpp\src\thrift\async\TConcurrentClientSyncInfo.cpp">
+      <Filter>ThriftCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="thrift\lib\cpp\src\thrift\TOutput.cpp">
+      <Filter>ThriftCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="thrift\lib\cpp\src\thrift\TApplicationException.cpp">
+      <Filter>ThriftCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="thrift\lib\cpp\src\thrift\protocol\TProtocol.cpp">
+      <Filter>ThriftCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="thrift\lib\cpp\src\thrift\concurrency\Monitor.cpp">
+      <Filter>ThriftCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="thrift\lib\cpp\src\thrift\concurrency\Mutex.cpp">
+      <Filter>ThriftCpp</Filter>
+    </ClCompile>
+    <ClCompile Include="thrift\lib\cpp\src\thrift\transport\TPipe.cpp">
+      <Filter>ThriftCpp</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FuseImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Compact.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
